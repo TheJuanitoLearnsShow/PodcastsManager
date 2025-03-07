@@ -5,5 +5,8 @@ CREATE TABLE dbo.EpisodesPublished
 	[EpisodeId] [EpisodeId] PRIMARY KEY,
 	[Title] [EpisodeTitle],
 	[Description] [EpisodeDescription],
-	[PublishedOn] [PublishDate]
+	[PublishedOn] [PublishDate],
+	[Url] [Url],
+	[Duration] [Duration],
+	[AudioFileSize] [AudioFileSize]
 )

@@ -6,15 +6,18 @@ using Xunit.Abstractions;
 namespace DatabaseTestRunner;
 
 public static class DbTestManager {
+    private const string CONNECTION_NAME = "PodcastsManager";
+    private const string PASS_VALUE = "PASS";
+
     public static TheoryData<string> GetTestStoredProcedures()
     {
-        var connectionString = "your_connection_string_here";
+        var connectionString = GetConnectionString();
         var query = @"
                 SELECT SPECIFIC_NAME 
                 FROM INFORMATION_SCHEMA.ROUTINES 
                 WHERE ROUTINE_TYPE = 'PROCEDURE' 
                 AND ROUTINE_SCHEMA = 'tests'
-                and SPECIFIC_NAME like '%.test_%'";
+                and SPECIFIC_NAME like '%.spTest_%'";
 
         var theoryData = new TheoryData<string>();
 
@@ -30,13 +33,19 @@ public static class DbTestManager {
         return theoryData;
     }
 
+    private static string GetConnectionString()
+    {
+        return Environment.GetEnvironmentVariable(CONNECTION_NAME) ?? 
+            $"Data Source=.\\sqlExpress;Database={CONNECTION_NAME};Integrated Security=True;TrustServerCertificate=True;";
+    }
+
     public static DbTestResult? GetTestResult(SqlDataReader reader)
     {
         if (reader.HasColumn("TestResult"))
         {
             var testResult = reader["TestResult"].GetDisplayString();
             var testDescription = reader.GetDisplayString("TestDescription") ;
-            var testOutcomeExplanation = reader.GetDisplayString("TestOutcomeExplanation";
+            var testOutcomeExplanation = reader.GetDisplayString("TestOutcomeExplanation");
 
             // Process the retrieved values as needed
             return new DbTestResult(testResult, testDescription, testOutcomeExplanation);
@@ -57,6 +66,26 @@ public static class DbTestManager {
         return false;
     }
 
+    private static string[] MapHeaderToStringArray(this SqlDataReader reader)
+    {
+        var values = new string[reader.FieldCount];
+        for (int i = 0; i < reader.FieldCount; i++)
+        {
+            values[i] = reader.GetName(i);
+        }
+        return values;
+    }
+
+    private static string[] MapToStringArray(this SqlDataReader reader)
+    {
+        var values = new string[reader.FieldCount];
+        for (int i = 0; i < reader.FieldCount; i++)
+        {
+            values[i] = reader[i].GetDisplayString();
+        }
+        return values;
+    }
+
     private static string GetDisplayString(this SqlDataReader reader, string columnName)
     {
         return reader.HasColumn(columnName) ? reader[columnName].GetDisplayString() : string.Empty;
@@ -67,7 +96,7 @@ public static class DbTestManager {
         return o.ToString() ?? string.Empty;
     }
 
-    public static void MapToDelimited(string[] headers, string[][] values)
+    public static string MapToDelimited(string[] headers, string[][] values)
     {
         var sb = new StringBuilder();
         var columnWidths = new int[headers.Length];
@@ -112,28 +141,56 @@ public static class DbTestManager {
             }
             sb.AppendLine("|");
         }
+        return sb.ToString();
     }
-    public static async Task ExecuteTestStoredProc(string connectionString, string spName, 
-        ITestOutputHelper testOutputHelper)
+    public static async Task ExecuteTestStoredProc(
+        string spName, 
+        ITestOutputHelper testOutputHelper,
+        CancellationToken cancellationToken)
     {
+        var connectionString = GetConnectionString();
         await using var connection = new SqlConnection(connectionString);
         var command = new SqlCommand(spName, connection);
         command.CommandType = CommandType.StoredProcedure;
-        connection.Open();
-        await using var reader = await command.ExecuteReaderAsync();
-        while (await reader.ReadAsync())
+        await connection.OpenAsync(cancellationToken);
+        await using var reader = await command.ExecuteReaderAsync(cancellationToken);
+        var failures = new List<string>();
+        do
         {
-            var testResult = GetTestResult(reader);
-            if (testResult != null)
+            string[]? headers = null;
+            var values = new List<string[]>();
+            while (await reader.ReadAsync(cancellationToken))
             {
-                if (!testResult.TestResult.Equals("PASS", StringComparison.OrdinalIgnoreCase))
+                headers ??= reader.MapHeaderToStringArray();
+                values.Add( reader.MapToStringArray() );
+
+                var testResult = GetTestResult(reader);
+
+                if (testResult != null)
                 {
-                    var msg =
-                        $"{spName}: Test {testResult.TestDescription} failed: {testResult.TestOutcomeExplanation}";
-                    Assert.Fail(msg);
+                    if (!testResult.TestResult.Equals(PASS_VALUE, StringComparison.OrdinalIgnoreCase))
+                    {
+                        var msg =
+                            $"{spName}: Test {testResult.TestDescription} failed: {testResult.TestOutcomeExplanation}";
+                        failures.Add(msg);
+                    }
                 }
             }
+            var output = MapToDelimited(headers ?? [], [.. values]);
+            testOutputHelper.WriteLine(output);
+
+        } while (await reader.NextResultAsync(cancellationToken));
+
+        if (failures.Count > 0)
+        {
+            var assertions = failures.Select(BuildFailAssertion).ToArray();
+            Assert.Multiple(assertions);
         }
+    }
+
+    private static Action BuildFailAssertion(string msg)
+    {
+        return () => Assert.Fail(msg);
     }
 }
 

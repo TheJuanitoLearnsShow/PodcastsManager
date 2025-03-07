@@ -62,14 +62,20 @@
     <Folder Include="Properties" />
     <Folder Include="Tables\" />
     <Folder Include="Types" />
+    <Folder Include="Tests" />
+    <Folder Include="Tests\StoredProcedures" />
+    <Folder Include="Functions" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Tables\EpisodesPublished.sql" />
+    <Build Include="Tables\EpisodesPublished.sql" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Types\EpisodeTitle.sql" />
     <Build Include="Types\SqlTypes.sql" />
     <Build Include="StoredProcedures\spPublishEpisode.sql" />
     <Build Include="Tables\EpisodesToPublish.sql" />
+    <Build Include="Tests\tests.sql" />
+    <Build Include="Tests\StoredProcedures\spTest_EpisodeXml.sql" />
+    <Build Include="Functions\fnGetEpisodesRssXml.sql" />
   </ItemGroup>
 </Project>

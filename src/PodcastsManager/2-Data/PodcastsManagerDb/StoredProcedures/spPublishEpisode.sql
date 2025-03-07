@@ -3,5 +3,8 @@
 	@Description [EpisodeDescription],
 	@AudioFilePath [FilePath]
 AS
-	SELECT 1 hi
+	insert into [dbo].[EpisodesToPublish]([Title],
+	[Description],
+	[AudioFilePath])
+	select @Title, @Description, @AudioFilePath
 RETURN 0

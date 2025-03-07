@@ -15,3 +15,19 @@ GO
 CREATE TYPE [dbo].[PublishDate]
 	FROM datetimeoffset NOT NULL
 GO
+
+CREATE TYPE [dbo].[Url]
+	FROM varchar(250) NOT NULL
+GO
+
+CREATE TYPE [dbo].[Duration]
+	FROM smallint NOT NULL
+GO
+
+CREATE TYPE [dbo].[AudioFileSize]
+	FROM int NOT NULL
+GO
+
+--CREATE TYPE [dbo].[AudioFileSize]
+--	FROM int NOT NULL
+--GO
