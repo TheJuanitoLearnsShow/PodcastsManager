@@ -1,27 +1,41 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.13.35806.99 d17.13
+VisualStudioVersion = 17.13.35806.99
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2-Data", "2-Data", "{A991EE0B-D339-4789-B5C0-4B04267095C9}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "7-Tests", "7-Tests", "{4E9E6364-99C9-4BAB-BBCD-130B570D706B}"
 EndProject
-Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "PodcastsManager", "2-Data\PodcastsManager.sqlproj", "{6FE42902-8125-4B71-8858-862BAF92E384}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatabaseTestRunner", "7-Tests\DatabaseTestRunner\DatabaseTestRunner.csproj", "{ADF84890-5448-4675-91A7-A7793A16927F}"
 EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "PodcastsManagerDb", "2-Data\PodcastsManagerDb\PodcastsManagerDb.sqlproj", "{AFD15C24-C8EE-4179-A196-126CAAE19659}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{ADF84890-5448-4675-91A7-A7793A16927F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ADF84890-5448-4675-91A7-A7793A16927F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ADF84890-5448-4675-91A7-A7793A16927F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ADF84890-5448-4675-91A7-A7793A16927F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AFD15C24-C8EE-4179-A196-126CAAE19659}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AFD15C24-C8EE-4179-A196-126CAAE19659}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AFD15C24-C8EE-4179-A196-126CAAE19659}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{AFD15C24-C8EE-4179-A196-126CAAE19659}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AFD15C24-C8EE-4179-A196-126CAAE19659}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AFD15C24-C8EE-4179-A196-126CAAE19659}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{ADF84890-5448-4675-91A7-A7793A16927F} = {4E9E6364-99C9-4BAB-BBCD-130B570D706B}
+		{AFD15C24-C8EE-4179-A196-126CAAE19659} = {A991EE0B-D339-4789-B5C0-4B04267095C9}
+	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {BAE17583-4A47-4146-8073-E9BA0EFB6579}
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{6FE42902-8125-4B71-8858-862BAF92E384} = {A991EE0B-D339-4789-B5C0-4B04267095C9}
-		{ADF84890-5448-4675-91A7-A7793A16927F} = {4E9E6364-99C9-4BAB-BBCD-130B570D706B}
-	EndGlobalSection
-	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 	EndGlobalSection
 EndGlobal
