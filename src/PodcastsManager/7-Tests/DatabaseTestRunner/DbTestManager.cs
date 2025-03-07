@@ -13,11 +13,12 @@ public static class DbTestManager {
     {
         var connectionString = GetConnectionString();
         var query = @"
-                SELECT SPECIFIC_NAME 
+                SELECT ROUTINE_SCHEMA + '.' + SPECIFIC_NAME 
                 FROM INFORMATION_SCHEMA.ROUTINES 
                 WHERE ROUTINE_TYPE = 'PROCEDURE' 
                 AND ROUTINE_SCHEMA = 'tests'
-                and SPECIFIC_NAME like '%.spTest_%'";
+                and SPECIFIC_NAME like '%spTest_%'
+";
 
         var theoryData = new TheoryData<string>();
 
@@ -118,19 +119,14 @@ public static class DbTestManager {
             }
         }
 
+        DoSeparatorRow(headers, sb, columnWidths);
         // Create the header row
         for (int i = 0; i < headers.Length; i++)
         {
             sb.Append("| ").Append(headers[i].PadRight(columnWidths[i])).Append(" ");
         }
         sb.AppendLine("|");
-
-        // Create the separator row
-        for (int i = 0; i < headers.Length; i++)
-        {
-            sb.Append("|-").Append(new string('-', columnWidths[i])).Append("-");
-        }
-        sb.AppendLine("|");
+        DoSeparatorRow(headers, sb, columnWidths);
 
         // Create the data rows
         foreach (var row in values)
@@ -140,8 +136,19 @@ public static class DbTestManager {
                 sb.Append("| ").Append(row[i].PadRight(columnWidths[i])).Append(" ");
             }
             sb.AppendLine("|");
+            DoSeparatorRow(headers, sb, columnWidths);
         }
         return sb.ToString();
+
+        static void DoSeparatorRow(string[] headers, StringBuilder sb, int[] columnWidths)
+        {
+            // Create the separator row
+            for (int i = 0; i < headers.Length; i++)
+            {
+                sb.Append("|-").Append(new string('-', columnWidths[i])).Append("-");
+            }
+            sb.AppendLine("|");
+        }
     }
     public static async Task ExecuteTestStoredProc(
         string spName, 
@@ -150,8 +157,10 @@ public static class DbTestManager {
     {
         var connectionString = GetConnectionString();
         await using var connection = new SqlConnection(connectionString);
-        var command = new SqlCommand(spName, connection);
-        command.CommandType = CommandType.StoredProcedure;
+        var command = new SqlCommand(spName, connection)
+        {
+            CommandType = CommandType.StoredProcedure
+        };
         await connection.OpenAsync(cancellationToken);
         await using var reader = await command.ExecuteReaderAsync(cancellationToken);
         var failures = new List<string>();

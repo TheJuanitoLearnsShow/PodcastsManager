@@ -25,7 +25,7 @@ BEGIN
 		SELECT 1
 			,'Test Title'
 			,'Test Description'
-			,'2025-01-01'
+			,'2025-01-01 13:00'
 			,'http://url'
 			,30
 			,56789;

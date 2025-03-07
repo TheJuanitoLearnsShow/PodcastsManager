@@ -7,10 +7,9 @@ public class SqlTests
 {
     private readonly ITestOutputHelper _testOutputHelper;
 
-    SqlTests(ITestOutputHelper testOutputHelper)
+    public SqlTests(ITestOutputHelper testOutputHelper)
     {
        _testOutputHelper = testOutputHelper;
-        // This is a test class
     }
 
     [Theory]
