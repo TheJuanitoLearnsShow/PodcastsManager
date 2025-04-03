@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE [dbo].[spPublishEpisode]
+﻿CREATE PROCEDURE [api].[spPublishEpisode]
 	@Title [EpisodeTitle],
 	@Description [EpisodeDescription],
 	@AudioFilePath [FilePath]

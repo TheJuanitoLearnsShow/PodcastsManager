@@ -3,17 +3,17 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <Name>PodcastsManagerDb</Name>
+    <Name>AfterInitialImport</Name>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectVersion>4.1</ProjectVersion>
-    <ProjectGuid>afd15c24-c8ee-4179-a196-126caae19659</ProjectGuid>
+    <ProjectGuid>{67797ca4-40da-4526-b631-d558f7cf619a}</ProjectGuid>
     <DSP>Microsoft.Data.Tools.Schema.Sql.Sql160DatabaseSchemaProvider</DSP>
     <OutputType>Database</OutputType>
     <RootPath>
     </RootPath>
-    <RootNamespace>PodcastsManagerDb</RootNamespace>
-    <AssemblyName>PodcastsManagerDb</AssemblyName>
-    <ModelCollation>1033, CI</ModelCollation>
+    <RootNamespace>AfterInitialImport</RootNamespace>
+    <AssemblyName>AfterInitialImport</AssemblyName>
+    <ModelCollation>1033,CI</ModelCollation>
     <DefaultFileStructure>BySchemaAndSchemaType</DefaultFileStructure>
     <DeployToDatabase>True</DeployToDatabase>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
@@ -22,8 +22,8 @@
     <SqlServerVerification>False</SqlServerVerification>
     <IncludeCompositeObjects>True</IncludeCompositeObjects>
     <TargetDatabaseSet>True</TargetDatabaseSet>
-    <ReadCommittedSnapshot>True</ReadCommittedSnapshot>
-    <AllowSnapshotIsolation>True</AllowSnapshotIsolation>
+    <DefaultCollation>SQL_Latin1_General_CP1_CI_AS</DefaultCollation>
+    <DefaultFilegroup>PRIMARY</DefaultFilegroup>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <OutputPath>bin\Release\</OutputPath>
@@ -57,32 +57,14 @@
   <Import Condition="'$(SQLDBExtensionsRefPath)' != ''" Project="$(SQLDBExtensionsRefPath)\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
   <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
   <ItemGroup>
-    <Folder Include="Views\" />
     <Folder Include="Properties" />
-    <Folder Include="Types" />
-    <Folder Include="Tests" />
-    <Folder Include="Tests\StoredProcedures" />
-    <Folder Include="api" />
-    <Folder Include="_dbo" />
-    <Folder Include="_dbo\Tables" />
-    <Folder Include="_dbo\Functions" />
-    <Folder Include="api\StoredProcedures" />
+    <Folder Include="dbo\" />
+    <Folder Include="dbo\Tables\" />
+    <Folder Include="dbo\Stored Procedures\" />
   </ItemGroup>
   <ItemGroup>
-    <Build Include="_dbo\Tables\EpisodesPublished.sql" />
-    <Build Include="_dbo\Tables\EpisodesToPublish.sql" />
-    <Build Include="_dbo\Tables\InterviewRequests.sql" />
-    <Build Include="_dbo\Functions\fnGetEpisodesRssXml.sql" />
-    <Build Include="api\StoredProcedures\spPublishEpisode.sql" />
-    <Build Include="api\api.sql" />
-    <Build Include="_dbo\Tables\GuestPayments.sql" />
-    <Build Include="_dbo\Tables\PodcastGuests.sql" />
-    <Build Include="api\StoredProcedures\spIssuePayment.sql" />
-  </ItemGroup>
-  <ItemGroup>
-    <Build Include="Types\EpisodeTitle.sql" />
-    <Build Include="Types\SqlTypes.sql" />
-    <Build Include="Tests\tests.sql" />
-    <Build Include="Tests\StoredProcedures\spTest_EpisodeXml.sql" />
+    <Build Include="dbo\Tables\PodcastGuests.sql" />
+    <Build Include="dbo\Tables\GuestPayments.sql" />
+    <Build Include="dbo\Stored Procedures\spIssuePayment.sql" />
   </ItemGroup>
 </Project>

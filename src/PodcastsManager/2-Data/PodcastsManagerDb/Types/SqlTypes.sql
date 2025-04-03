@@ -28,6 +28,14 @@ CREATE TYPE [dbo].[AudioFileSize]
 	FROM int NOT NULL
 GO
 
---CREATE TYPE [dbo].[AudioFileSize]
---	FROM int NOT NULL
---GO
+CREATE TYPE [dbo].[LastName]
+	FROM varchar(100) NOT NULL
+GO
+
+CREATE TYPE [dbo].[FirstName]
+	FROM varchar(100) NOT NULL
+GO
+
+CREATE TYPE [dbo].[EmailAddress]
+	FROM varchar(150) NOT NULL
+GO
