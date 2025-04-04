@@ -1,7 +1,8 @@
 ﻿CREATE TABLE [dbo].[PodcastGuests] (
-    [GuestId]    INT           IDENTITY (1, 1) NOT NULL,
-    [GuestName]  VARCHAR (120) NOT NULL,
-    [ChefRating] INT           NOT NULL,
-    PRIMARY KEY CLUSTERED ([GuestId] ASC)
+    [GuestId]    [GuestId]          ,
+    [GuestName]  [GuestName],
+    [ChefRating] [Rating],
+    PRIMARY KEY CLUSTERED ([GuestId] ASC), 
+    CONSTRAINT [CK_PodcastGuests_Rating] CHECK ([ChefRating] between 0 and 5)
 );
 

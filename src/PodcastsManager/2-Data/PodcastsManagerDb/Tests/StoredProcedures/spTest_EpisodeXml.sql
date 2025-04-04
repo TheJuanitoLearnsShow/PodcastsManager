@@ -11,7 +11,17 @@ BEGIN
 		DECLARE @EpisodeXml VARCHAR(MAX);
 
 		--- clear data and add one episode
+		DELETE dbo.PodcastGuests;
 		DELETE dbo.EpisodesPublished;
+		
+		INSERT dbo.PodcastGuests (
+			[GuestId]
+			,[GuestName]
+			,[ChefRating]
+			)
+		select 1,
+			'Tarquino',
+			5;
 
 		INSERT dbo.EpisodesPublished (
 			[EpisodeId]

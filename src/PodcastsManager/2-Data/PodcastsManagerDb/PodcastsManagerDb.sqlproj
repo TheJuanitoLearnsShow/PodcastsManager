@@ -67,6 +67,8 @@
     <Folder Include="_dbo\Tables" />
     <Folder Include="_dbo\Functions" />
     <Folder Include="api\StoredProcedures" />
+    <Folder Include="Security" />
+    <Folder Include="api\Views" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="_dbo\Tables\EpisodesPublished.sql" />
@@ -79,6 +81,8 @@
     <Build Include="_dbo\Tables\PodcastGuests.sql" />
     <Build Include="api\StoredProcedures\spIssuePayment.sql" />
     <Build Include="Tests\StoredProcedures\spTest_Dummy.sql" />
+    <Build Include="Security\PodcastAppServiceRole.sql" />
+    <Build Include="api\Views\vEpisodesAndGuests.sql" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Types\EpisodeTitle.sql" />

@@ -39,3 +39,15 @@ GO
 CREATE TYPE [dbo].[EmailAddress]
 	FROM varchar(150) NOT NULL
 GO
+
+CREATE TYPE [dbo].[GuestName]
+	FROM varchar(100) NOT NULL
+GO
+
+CREATE TYPE [dbo].[GuestId]
+	FROM int NOT NULL
+GO
+
+CREATE TYPE [dbo].[Rating]
+	FROM int NOT NULL
+GO
