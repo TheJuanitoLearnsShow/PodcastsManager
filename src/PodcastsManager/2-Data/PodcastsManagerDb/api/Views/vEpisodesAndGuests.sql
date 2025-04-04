@@ -11,5 +11,4 @@ SELECT [EpisodeId]
 	,g.[GuestName]
 	,g.[ChefRating]
 FROM dbo.EpisodesPublished e
-inner join dbo.PodcastGuests g
-on e.GuestId = g.GuestId
+INNER JOIN dbo.PodcastGuests g ON e.GuestId = g.GuestId

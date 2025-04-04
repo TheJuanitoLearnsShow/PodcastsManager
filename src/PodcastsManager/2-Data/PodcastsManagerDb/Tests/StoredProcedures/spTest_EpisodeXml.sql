@@ -31,6 +31,7 @@ BEGIN
 			,[Url]
 			,[Duration]
 			,[AudioFileSize]
+			,[GuestId]
 			)
 		SELECT 1
 			,'Test Title'
@@ -38,7 +39,8 @@ BEGIN
 			,'2025-01-01 13:00'
 			,'http://url'
 			,30
-			,56789;
+			,56789
+			,1;
 
 		-- Act
 		SELECT @EpisodeXml = CONVERT(VARCHAR(MAX), x.EpisodeXml)
