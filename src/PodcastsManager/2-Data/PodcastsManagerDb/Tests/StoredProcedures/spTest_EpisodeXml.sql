@@ -41,8 +41,8 @@ BEGIN
 		SELECT @EpisodeXml XmlProduced;
 
 		DECLARE @dateWrongMsg VARCHAR(512) = CASE 
-				--WHEN @EpisodeXml LIKE '%Wed%'
-				WHEN @EpisodeXml LIKE '%make it fail%'
+				WHEN @EpisodeXml LIKE '%Wed%'
+				--WHEN @EpisodeXml LIKE '%make it fail%'
 					THEN NULL
 				ELSE 'Date is not properly formated: ' + @EpisodeXml
 				END;

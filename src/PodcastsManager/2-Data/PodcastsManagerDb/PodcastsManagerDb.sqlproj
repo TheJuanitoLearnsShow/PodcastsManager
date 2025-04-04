@@ -78,6 +78,7 @@
     <Build Include="_dbo\Tables\GuestPayments.sql" />
     <Build Include="_dbo\Tables\PodcastGuests.sql" />
     <Build Include="api\StoredProcedures\spIssuePayment.sql" />
+    <Build Include="Tests\StoredProcedures\spTest_Dummy.sql" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Types\EpisodeTitle.sql" />

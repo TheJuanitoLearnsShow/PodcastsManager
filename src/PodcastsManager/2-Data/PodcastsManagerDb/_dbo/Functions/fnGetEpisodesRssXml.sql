@@ -5,6 +5,7 @@
 )
 RETURNS TABLE AS RETURN
 ( 
+
     WITH XMLNAMESPACES (
         'http://www.itunes.com/dtds/podcast-1.0.dtd' AS itunes
     )

@@ -66,5 +66,7 @@
     <Build Include="dbo\Tables\PodcastGuests.sql" />
     <Build Include="dbo\Tables\GuestPayments.sql" />
     <Build Include="dbo\Stored Procedures\spIssuePayment.sql" />
+    <Build Include="dbo\Tables\Role1.sql" />
+    <Build Include="UserDefinedDataType1.sql" />
   </ItemGroup>
 </Project>
