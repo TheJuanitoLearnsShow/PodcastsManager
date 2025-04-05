@@ -83,6 +83,7 @@
     <Build Include="Tests\StoredProcedures\spTest_Dummy.sql" />
     <Build Include="Security\PodcastAppServiceRole.sql" />
     <Build Include="api\Views\vEpisodesAndGuests.sql" />
+    <Build Include="Types\UserDefinedDataType1.sql" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Types\EpisodeTitle.sql" />

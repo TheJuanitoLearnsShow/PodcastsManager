@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE [api].[spIssuePayment] @GuestId INT
+﻿CREATE PROCEDURE [api].[spIssuePayment] @GuestId [GuestId]
 AS
 DECLARE @tonsOfMoney$$$ MONEY = 400000000
 DECLARE @amountToPay MONEY = (

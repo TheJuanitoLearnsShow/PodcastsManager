@@ -24,6 +24,7 @@ RETURNS TABLE AS RETURN
                 '00:' + format(e.Duration, '00') + ':00' AS 'itunes:duration',
                 'false' AS 'itunes:explicit',
                 'full' AS 'itunes:episodeType'
+                
             FROM EpisodesPublished e
             WHERE e.EpisodeId BETWEEN @StartEpisodeId AND @EndEpisodeId
             FOR XML PATH('item'), TYPE

@@ -1,4 +1,4 @@
-﻿CREATE VIEW [dbo].[vEpisodesAndGuests]
+﻿CREATE VIEW [api].[vEpisodesAndGuests]
 AS
 SELECT [EpisodeId]
 	,[Title]
