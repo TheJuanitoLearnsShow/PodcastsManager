@@ -41,7 +41,7 @@ CREATE TYPE [dbo].[EmailAddress]
 GO
 
 CREATE TYPE [dbo].[GuestName]
-	FROM varchar(100) NOT NULL
+	FROM varchar(120) NOT NULL
 GO
 
 CREATE TYPE [dbo].[GuestId]

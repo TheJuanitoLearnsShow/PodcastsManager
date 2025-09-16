@@ -1,0 +1,14 @@
+{
+"$schema": "http://json.schemastore.org/template",
+"author": "Juan Pablo Tarquino",
+"classifications": ["Solution", "SQL"],
+"identity": "JPT.SQLProject.Template",
+"name": "SQL Server Project Solution",
+"shortName": "sqlsolution-jpt",
+"sourceName": "PodcastsManager",
+"tags": {
+"language": "SQL",
+"type": "solution"
+},
+"preferNameDirectory": true
+}
