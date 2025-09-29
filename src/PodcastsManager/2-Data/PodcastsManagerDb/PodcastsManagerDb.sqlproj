@@ -91,4 +91,7 @@
     <Build Include="Tests\tests.sql" />
     <Build Include="Tests\StoredProcedures\spTest_EpisodeXml.sql" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="PodcastsManagerDb-automated-tests.publish.xml" />
+  </ItemGroup>
 </Project>

@@ -8,9 +8,6 @@
     <TargetDatabaseSet>True</TargetDatabaseSet>
     <ProjectVersion>4.1</ProjectVersion>
     <ProjectGuid>{0d9f49ae-c8e5-4169-9e20-7db98cbda06e}</ProjectGuid>
-    <TargetFrameworkVersion>v4.8.1</TargetFrameworkVersion>
-    <TargetFrameworkProfile />
-    <EnableDefaultSqlItems>false</EnableDefaultSqlItems>
   </PropertyGroup>
   <ItemGroup>
     <Folder Include="_dbo" />

@@ -29,7 +29,7 @@ CREATE TYPE [dbo].[AudioFileSize]
 GO
 
 CREATE TYPE [dbo].[LastName]
-	FROM varchar(100) NOT NULL
+	FROM varchar(160) NOT NULL
 GO
 
 CREATE TYPE [dbo].[FirstName]
