@@ -29,7 +29,7 @@ BEGIN
 			,[Description]
 			,[PublishedOn]
 			,[Url]
-			,[Duration]
+			,[DurationInMinutes]
 			,[AudioFileSize]
 			,[GuestId]
 			)

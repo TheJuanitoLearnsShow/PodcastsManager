@@ -21,7 +21,7 @@ RETURNS TABLE AS RETURN
                 FORMAT(e.PublishedOn, 'ddd, dd MMM yyyy HH:mm:ss ''EST''') AS 'pubDate',
                 e.[Title] AS 'title',
                 e.[Description] AS 'description',
-                '00:' + format(e.Duration, '00') + ':00' AS 'itunes:duration',
+                '00:' + format(e.[DurationInMinutes], '00') + ':00' AS 'itunes:duration',
                 'false' AS 'itunes:explicit',
                 'full' AS 'itunes:episodeType'
             FROM EpisodesPublished e

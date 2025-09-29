@@ -1,0 +1,58 @@
+name: SQL Production Deployment
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+
+env:
+  BUILD_CONFIGURATION: Release
+  SQL_PROJ_NAME: PodcastsManagerDb
+  PodcastsManager: Data Source=.\sqlExpress;Database=PodcastsManager;Integrated Security=True;TrustServerCertificate=True
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: [self-hosted]
+    defaults:
+      run:
+        working-directory: src\PodcastsManager\2-Data\PodcastsManagerDb\
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Add MSBuild to PATH
+      uses: microsoft/setup-msbuild@v2
+
+    - name: Setup .NET Core SDK
+      uses: actions/setup-dotnet@v4
+      with:
+        # Optional SDK version(s) to use. If not provided, will install global.json version when available. Examples: 2.2.104, 3.1, 3.1.x, 3.x, 6.0.2xx
+        dotnet-version: 9.0.x
+
+    - name: Install SqlPackage Tool
+      run: dotnet tool install -g microsoft.sqlpackage
+
+    - name: Build
+      # Add additional options to the MSBuild command line here (like platform or verbosity level).
+      # See https://docs.microsoft.com/visualstudio/msbuild/msbuild-command-line-reference
+      run: msbuild "${{env.SQL_PROJ_NAME}}.sqlproj" /p:Configuration=${{env.BUILD_CONFIGURATION}} 
+    
+    - name: Report
+      # For more details on the options for SqlPackage, see https://learn.microsoft.com/en-us/sql/tools/sqlpackage/sqlpackage-publish 
+      run: SqlPackage /Action:DeployReport /SourceFile:".\bin\release\${{env.SQL_PROJ_NAME}}.dacpac" /TargetConnectionString:"${{env.PodcastsManager}}" /OutputPath:DeployReport.xml /p:ScriptDatabaseCompatibility=True
+
+    # save the deployment script as an artifact (https://github.com/Azure-Samples/sql-projects-devops-samples/blob/main/Demos/4-ContinuousDeployments.md)
+    - name: Save deployment script
+      uses: actions/upload-artifact@v4
+      with:
+        name: deployment-report
+        path: SqlDeployReport.xml
+
+    - name: Publish
+      # For more details on the options for SqlPackage, see https://learn.microsoft.com/en-us/sql/tools/sqlpackage/sqlpackage-publish 
+      run: SqlPackage /Action:Publish /SourceFile:".\bin\release\${{env.SQL_PROJ_NAME}}.dacpac" /TargetConnectionString:"${{env.PodcastsManager}}" /p:ScriptDatabaseCompatibility=True
+
+          
+          

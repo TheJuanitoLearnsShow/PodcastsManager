@@ -33,8 +33,8 @@
          The Exec only runs if the script exists; otherwise a warning is logged. -->
     <Target Name="PublishSdkDbBeforeTests" BeforeTargets="VSTest;Test">
       <PropertyGroup>
-        <SdkDbPublishScript>$(MSBuildThisFileDirectory)..\..\2-Data\PodcastsManagerSDKDb\publish-to-local-sqlexpress.bat</SdkDbPublishScript>
-        <SdkDbPublishDir>$(MSBuildThisFileDirectory)..\..\2-Data\PodcastsManagerSDKDb</SdkDbPublishDir>
+        <SdkDbPublishScript>$(MSBuildThisFileDirectory)..\..\2-Data\PodcastsManagerDb\publish-to-automated-tests.bat</SdkDbPublishScript>
+        <SdkDbPublishDir>$(MSBuildThisFileDirectory)..\..\2-Data\PodcastsManagerDb</SdkDbPublishDir>
       </PropertyGroup>
 
       <Message Importance="high" Text="Checking for SDK DB publish script at '$(SdkDbPublishScript)'..." />

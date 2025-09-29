@@ -7,8 +7,9 @@ CREATE TABLE dbo.EpisodesPublished
 	[Description] [EpisodeDescription],
 	[PublishedOn] [PublishDate],
 	[Url] [Url],
-	[Duration] [Duration],
+	[DurationInMinutes] [Duration],
 	[AudioFileSize] [AudioFileSize],
 	[GuestId] [GuestId], 
+	[EncodingType] varchar(20) default ('mp3') NOT NULL,
     CONSTRAINT [FK_EpisodesPublished_PodcastsGuests] FOREIGN KEY ([GuestId]) REFERENCES dbo.[PodcastGuests]([GuestId])
 )

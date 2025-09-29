@@ -94,4 +94,7 @@
   <ItemGroup>
     <None Include="PodcastsManagerDb-automated-tests.publish.xml" />
   </ItemGroup>
+  <ItemGroup>
+    <RefactorLog Include="PodcastsManagerDb.refactorlog" />
+  </ItemGroup>
 </Project>

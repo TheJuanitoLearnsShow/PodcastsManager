@@ -37,7 +37,7 @@ public static class DbTestManager {
     private static string GetConnectionString()
     {
         return Environment.GetEnvironmentVariable(CONNECTION_NAME) ?? 
-            $"Data Source=.\\sqlExpress;Database={CONNECTION_NAME};Integrated Security=True;TrustServerCertificate=True;";
+            $"Data Source=.\\sqlExpress;Database=AutomatedTESTS_{CONNECTION_NAME};Integrated Security=True;TrustServerCertificate=True;";
     }
 
     public static DbTestResult? GetTestResult(SqlDataReader reader)
