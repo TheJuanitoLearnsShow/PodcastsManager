@@ -8,5 +8,39 @@
     <TargetDatabaseSet>True</TargetDatabaseSet>
     <ProjectVersion>4.1</ProjectVersion>
     <ProjectGuid>{0d9f49ae-c8e5-4169-9e20-7db98cbda06e}</ProjectGuid>
+    <TargetFrameworkVersion>v4.8.1</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
+    <EnableDefaultSqlItems>false</EnableDefaultSqlItems>
   </PropertyGroup>
+  <ItemGroup>
+    <Folder Include="_dbo" />
+    <Folder Include="_dbo\Functions" />
+    <Folder Include="_dbo\Tables" />
+    <Folder Include="api" />
+    <Folder Include="api\StoredProcedures" />
+    <Folder Include="api\Views" />
+    <Folder Include="Security" />
+    <Folder Include="Tests" />
+    <Folder Include="Tests\StoredProcedures" />
+    <Folder Include="Types" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="_dbo\Functions\fnGetEpisodesRssXml.sql" />
+    <Build Include="_dbo\Tables\EpisodesPublished.sql" />
+    <Build Include="_dbo\Tables\EpisodesToPublish.sql" />
+    <Build Include="_dbo\Tables\GuestPayments.sql" />
+    <Build Include="_dbo\Tables\InterviewRequests.sql" />
+    <Build Include="_dbo\Tables\PodcastGuests.sql" />
+    <Build Include="api\StoredProcedures\spIssuePayment.sql" />
+    <Build Include="api\StoredProcedures\spPublishEpisode.sql" />
+    <Build Include="api\Views\vEpisodesAndGuests.sql" />
+    <Build Include="api\api.sql" />
+    <Build Include="Security\PodcastAppServiceRole.sql" />
+    <Build Include="Tests\StoredProcedures\spTest_Dummy.sql" />
+    <Build Include="Tests\StoredProcedures\spTest_EpisodeXml.sql" />
+    <Build Include="Tests\tests.sql" />
+    <Build Include="Types\EpisodeTitle.sql" />
+    <Build Include="Types\SqlTypes.sql" />
+    <Build Include="Types\UserDefinedDataType1.sql" />
+  </ItemGroup>
 </Project>
