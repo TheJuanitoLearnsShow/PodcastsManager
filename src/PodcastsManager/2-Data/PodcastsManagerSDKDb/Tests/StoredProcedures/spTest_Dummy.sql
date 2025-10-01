@@ -14,7 +14,7 @@ BEGIN
 
 		-- Assert
 		SELECT 'Dummy Tests' [TestDescription]
-			,'PASS' [TestResult]
+			,'FAIL' [TestResult]
 			,'Awesome!!!' [TestOutcomeExplanation]
 
 		ROLLBACK TRANSACTION;
