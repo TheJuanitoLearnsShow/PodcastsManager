@@ -6,7 +6,7 @@
     <Name>PodcastsManagerDb</Name>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectVersion>4.1</ProjectVersion>
-    <ProjectGuid>afd15c24-c8ee-4179-a196-126caae19659</ProjectGuid>
+    <ProjectGuid>{afd15c24-c8ee-4179-a196-126caae19659}</ProjectGuid>
     <DSP>Microsoft.Data.Tools.Schema.Sql.Sql160DatabaseSchemaProvider</DSP>
     <OutputType>Database</OutputType>
     <RootPath>
