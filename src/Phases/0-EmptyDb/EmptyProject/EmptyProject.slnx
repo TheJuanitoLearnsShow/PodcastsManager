@@ -1,5 +1,5 @@
 <Solution>
-  <Project Path="EmptyProject/EmptyProject.sqlproj">
+  <Project Path="../../../../../../../../sources/PodcastsManager/src/Phases/0-EmptyDb/EmptyProject/EmptyProject/EmptyProject.sqlproj" Id="cd116604-f17e-44da-9fa5-5a49fa294023">
     <Build />
     <Deploy />
   </Project>
