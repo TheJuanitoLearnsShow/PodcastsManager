@@ -1,2 +1,2 @@
 ﻿CREATE VIEW [dbo].[vGuests]
-	AS SELECT g.ChefRating23 FROM PodcastGuests g
+	AS SELECT g.ChefRating FROM PodcastGuests g

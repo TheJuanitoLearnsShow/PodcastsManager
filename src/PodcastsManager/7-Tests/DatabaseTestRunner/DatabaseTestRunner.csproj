@@ -27,23 +27,5 @@
         <Using Include="Xunit" />
     </ItemGroup>
 
-    <!-- Run the SDK DB publish script before tests. This will execute
-         2-Data\PodcastsManagerSDKDb\publish-to-local-sqlexpress.bat with
-         its working directory set so the script's relative paths resolve.
-         The Exec only runs if the script exists; otherwise a warning is logged. -->
-    <Target Name="PublishSdkDbBeforeTests" BeforeTargets="VSTest;Test">
-      <PropertyGroup>
-        <SdkDbPublishScript>$(MSBuildThisFileDirectory)..\..\2-Data\PodcastsManagerDb\publish-to-automated-tests.bat</SdkDbPublishScript>
-        <SdkDbPublishDir>$(MSBuildThisFileDirectory)..\..\2-Data\PodcastsManagerDb</SdkDbPublishDir>
-      </PropertyGroup>
-
-      <Message Importance="high" Text="Checking for SDK DB publish script at '$(SdkDbPublishScript)'..." />
-
-      <!-- Run the script if it exists -->
-      <Exec Command="&quot;$(SdkDbPublishScript)&quot;" WorkingDirectory="$(SdkDbPublishDir)" Condition="Exists('$(SdkDbPublishScript)')" />
-
-      <!-- Warn (but continue) if the script wasn't found -->
-      <Message Importance="high" Text="Publish script not found at '$(SdkDbPublishScript)'. Skipping SDK DB publish." Condition="!Exists('$(SdkDbPublishScript)')" />
-    </Target>
 
 </Project>
