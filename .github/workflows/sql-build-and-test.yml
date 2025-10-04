@@ -44,6 +44,7 @@ jobs:
     - name: Publish
       # For more details on the options for SqlPackage, see https://learn.microsoft.com/en-us/sql/tools/sqlpackage/sqlpackage-publish 
       run: SqlPackage /Action:Publish /SourceFile:".\bin\release\${{env.SQL_PROJ_NAME}}.dacpac" /TargetConnectionString:"${{env.PodcastsManager}}" /p:DropObjectsNotInSource=True /p:ScriptDatabaseCompatibility=True /p:BlockOnPossibleDataLoss=False
+      #for sql variables use /v:Variable_Name="your value", that will replace $(Variable_Name)
 
   test:
     runs-on: [self-hosted]
