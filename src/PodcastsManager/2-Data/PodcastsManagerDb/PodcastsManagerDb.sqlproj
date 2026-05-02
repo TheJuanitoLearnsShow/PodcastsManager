@@ -65,7 +65,6 @@
     <Folder Include="Tests\StoredProcedures" />
     <Folder Include="api" />
     <Folder Include="_dbo" />
-    <Folder Include="_dbo\Tables" />
     <Folder Include="_dbo\Functions" />
     <Folder Include="api\StoredProcedures" />
     <Folder Include="Security" />
@@ -85,6 +84,7 @@
     <Build Include="Security\PodcastAppServiceRole.sql" />
     <Build Include="api\Views\vEpisodesAndGuests.sql" />
     <Build Include="Types\UserDefinedDataType1.sql" />
+    <Build Include="_dbo\Tables\Reviews.sql" />
     <Build Include="_dbo\Tables\Table1.sql" />
     <Build Include="Types\UserDefinedDataType2.sql" />
     <Build Include="api\Views\vGuestPayments.sql" />
