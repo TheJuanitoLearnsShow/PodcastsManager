@@ -3,4 +3,4 @@
 
 msbuild "PodcastsManagerDb.sqlproj" /p:Configuration=Release
 
-SqlPackage /Action:Publish /SourceFile:".\bin\release\PodcastsManagerDb.dacpac" /TargetConnectionString:"Data Source=.\sqlExpress;Database=PodcastsManager;Integrated Security=True;TrustServerCertificate=True;" /p:ScriptDatabaseCompatibility=True /p:BlockOnPossibleDataLoss=False
+SqlPackage /Action:Publish /SourceFile:".\bin\release\PodcastsManagerDb.dacpac" /TargetConnectionString:"Data Source=.\sqlExpress;Database=PodcastsManager;Integrated Security=True;TrustServerCertificate=True;" /p:ScriptDatabaseCompatibility=True /p:BlockOnPossibleDataLoss=False /v:PaymentsDb=PaymentsDb

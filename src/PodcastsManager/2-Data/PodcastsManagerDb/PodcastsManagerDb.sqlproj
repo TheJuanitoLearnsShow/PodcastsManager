@@ -24,6 +24,7 @@
     <TargetDatabaseSet>True</TargetDatabaseSet>
     <ReadCommittedSnapshot>True</ReadCommittedSnapshot>
     <AllowSnapshotIsolation>True</AllowSnapshotIsolation>
+    <AutoUpdateStatisticsAsynchronously>True</AutoUpdateStatisticsAsynchronously>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <OutputPath>bin\Release\</OutputPath>
@@ -84,6 +85,9 @@
     <Build Include="Security\PodcastAppServiceRole.sql" />
     <Build Include="api\Views\vEpisodesAndGuests.sql" />
     <Build Include="Types\UserDefinedDataType1.sql" />
+    <Build Include="_dbo\Tables\Table1.sql" />
+    <Build Include="Types\UserDefinedDataType2.sql" />
+    <Build Include="api\Views\vGuestPayments.sql" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Types\EpisodeTitle.sql" />
@@ -96,5 +100,23 @@
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="PodcastsManagerDb.refactorlog" />
+  </ItemGroup>
+  <ItemGroup>
+    <PostDeploy Include="Script.PostDeployment1.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PaymentsDb\PaymentsDb.sqlproj">
+      <Name>PaymentsDb</Name>
+      <Project>{07415da6-597e-4dd4-b0ac-fd10f4f26690}</Project>
+      <Private>True</Private>
+      <SuppressMissingDependenciesErrors>False</SuppressMissingDependenciesErrors>
+      <DatabaseSqlCmdVariable>PaymentsDb</DatabaseSqlCmdVariable>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <SqlCmdVariable Include="PaymentsDb">
+      <DefaultValue>PaymentsDb</DefaultValue>
+      <Value>$(SqlCmdVar__1)</Value>
+    </SqlCmdVariable>
   </ItemGroup>
 </Project>
